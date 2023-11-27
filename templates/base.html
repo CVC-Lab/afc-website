@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligent Machine Learning for Real Time Processing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{{ url_for('home') }}">Intelligent Machine Learning for Real Time Processing of Hyperspectral Video Streams</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('render_page', page_name='sampling') }}" class="{{ 'active' if active_page == 'sampling' else '' }}">On the Fly Sampling</a></li>
+                <li><a href="{{ url_for('render_page', page_name='camera-isp') }}" class="{{ 'active' if active_page == 'camera-isp' else '' }}">Camera ISP Code & Paper</a></li>
+                <li><a href="{{ url_for('render_page', page_name='signature-detection') }}" class="{{ 'active' if active_page == 'signature-detection' else '' }}">Signature Detection & Classification</a></li>
+                <li><a href="{{ url_for('render_page', page_name='integration') }}" class="{{ 'active' if active_page == 'integration' else '' }}">Integration of IR/EO Video Streams</a></li>
+                <li><a href="{{ url_for('render_page', page_name='event-signature') }}" class="{{ 'active' if active_page == 'event-signature' else '' }}">Novel Event Signature Detection</a></li>
+                <li><a href="{{ url_for('render_page', page_name='localization') }}" class="{{ 'active' if active_page == 'localization' else '' }}">Real Time Localization</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
