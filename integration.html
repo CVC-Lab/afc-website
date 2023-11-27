@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligent Machine Learning for Real Time Processing</title>
+    <link rel="stylesheet" href="/afc-website/static/style.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="/afc-website/">Intelligent Machine Learning for Real Time Processing of Hyperspectral Video Streams</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/afc-website/sampling.html" class="">On the Fly Sampling</a></li>
+                <li><a href="/afc-website/camera-isp.html" class="">Camera ISP Code & Paper</a></li>
+                <li><a href="/afc-website/signature-detection.html" class="">Signature Detection & Classification</a></li>
+                <li><a href="/afc-website/integration.html" class="active">Integration of IR/EO Video Streams</a></li>
+                <li><a href="/afc-website/event-signature.html" class="">Novel Event Signature Detection</a></li>
+                <li><a href="/afc-website/localization.html" class="">Real Time Localization</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-container">
+        
+    <h1 id="integration-of-ireo-video-streams">Integration of IR/EO Video Streams</h1>
+
+<p>The integration of Infrared (IR) and Electro-Optical (EO) video streams stands
+as a complex and critical challenge in the realms of computer vision and
+surveillance technologies. Our contributions in this sector seek to pioneer new
+frontiers by utilizing innovative techniques that address both traditional and
+emergent challenges in object detection, shape matching, and intensity
+recovery.</p>
+
+<p>In the realm of consistent shape matching, our work draws upon the GenCorres
+method, offering a robust solution for matching and aligning diverse
+geometries. Complementing this, the E-CIR technique addresses the continuous
+intensity recovery, adapting novel principles of information retrieval and
+object recognition.</p>
+
+<p>Further augmenting our approach is the integration of recent advancements in
+adversarial attack pipelines, as detailed in "Learning Transferable 3D
+Adversarial Cloaks for Deep Trained Detectors" (Maesumi et al., 2021). This
+method introduces a novel patch-based adversarial attack that trains
+adversarial patches on 3D human meshes, offering an innovative attacking scheme
+with real-world robustness. Contrary to traditional adversarial attacks, this
+approach incorporates deformation consistent with real-world materials,
+rendering it effective under varying views. Collectively, these groundbreaking
+methods form the core of our strategy for integrating IR and EO video streams.
+In the subsequent sections, we elucidate the technicalities of these
+contributions, emphasizing their relevance to the broader scope of our project.</p>
+
+<h2 id="gencorres-consistent-shape-matching-via-coupled-implicit-explicit-shape-generative-models">GenCorres: Consistent Shape Matching via Coupled Implicit-Explicit Shape Generative Models</h2>
+
+<p>GenCorres introduces a groundbreaking unsupervised joint shape matching (JSM)
+approach (Yang et al., 2023). At its core, GenCorres learns a parametric
+mesh generator to fit deformable shapes, preserving local geometric structures
+and enforcing consistent correspondences. Three primary advantages define
+GenCorres:</p>
+
+<ol>
+<li><p><strong>Data-Driven Power of JSM:</strong> GenCorres performs JSM on a synthetic
+shape collection much larger than the input shapes, maximizing the
+data-driven potential.</p></li>
+<li><p><strong>Unified Matching Approach:</strong> GenCorres combines consistent shape
+matching and pairwise matching by enforcing deformation priors
+between adjacent synthetic shapes.</p></li>
+<li><p><strong>Concise Encoding:</strong> The generator within GenCorres encapsulates a
+simplified encoding of consistent shape correspondences.</p></li>
+</ol>
+
+<p>Despite the inherent challenges in learning a mesh generator from unorganized
+shapes, GenCorres overcomes local minima by utilizing an implicit generator to
+provide intermediate shapes. Experimental results attest to the substantial
+superiority of GenCorres over existing JSM techniques, with synthetic shapes
+preserving local geometric features and outperforming competitive deformable
+shape generators.</p>
+
+<h2 id="e-cir-event-enhanced-continuous-intensity-recovery">E-CIR: Event-Enhanced Continuous Intensity Recovery</h2>
+
+<p>E-CIR contributes a novel approach to the conversion of blurry images into
+sharp videos (Song et al., 2022). Motion blur, a pervasive visual artifact, is
+resolved by E-CIR through the parametric representation of time-to-intensity
+functions. By leveraging events as auxiliary input, E-CIR constructs parametric
+bases and trains a deep learning model to predict function coefficients. The
+introduction of a refinement module further ensures consistency across
+consecutive frames.</p>
+
+<p>Comparatively, E-CIR delivers smoother and more realistic results against
+existing event-enhanced deblurring methods. The approach bridges the
+integration of IR/EO video streams, providing a robust solution to motion blur
+and intensity recovery.</p>
+
+<p>Figure 1 offers a comprehensive view of E-CIR's structure, detailing the
+step-by-step flow from blurry image input to sharp video output, utilizing the
+innovations of event-enhanced processing and refinement techniques.</p>
+
+<figure id="e-cir">
+<img src="../static/images/E-CIR.png" alt="The architecture of E-CIR showing the process of converting a blurry image into a sharp video. The diagram illustrates how events are leveraged to construct parametric bases, the deep learning model for predicting coefficients, and the refinement module to ensure visual consistency across frames."/>
+<figcaption>Figure 1: E-CIR Architecture</figcaption>
+</figure>
+
+<p><strong>Code:</strong>
+The code for E-CIR: Event-Enhanced Continuous Intensity Recovery is available
+in SharePoint. This PyTorch-based implementation comprises two main modules:
+the initialization module, responsible for regressing polynomial coefficients
+from the events and the blurry frame, and the refinement module, which polishes
+frame quality through visual feature propagation. For experimentation, E-CIR
+was tested on the REDS dataset and seven real event captures in EDI. The REDS
+dataset is a REalistic and Dynamic Scenes (REDS) dataset for video deblurring
+and super-resolution. Detailed instructions on setting up these datasets can be
+found in the corresponding REDS_Dataset.md and EDI_Dataset.md files.</p>
+
+<h2 id="learning-transferable-3d-adversarial-cloaks-for-deep-trained-detectors">Learning Transferable 3D Adversarial Cloaks for Deep Trained Detectors</h2>
+
+<figure id="3DCloakArchitecture">
+<img src="../static/images/3DCloakArchitecture.png" alt="3D adversarial logo pipeline"/>
+<figcaption>Figure 2: 3D Adversarial Logo Pipeline.</figcaption>
+</figure>
+
+<figure id="3DCloakExample">
+<img src="../static/images/3DCloakExample.png" alt="Examples of our adversarial attack against Faster R-CNN. The first row contains human meshes without any adversarial perturbation; Faster R-CNN is 99% confident in its human predictions in these images. The second row displays the cloaking effect of an adversarial patch trained by the pipeline outlined in Figure. To bolster our attack robustness, we train and test our adversarial logos on meshes with a diverse set of surface-level and body-level deformations. The figure above features running, walking, and idle poses on meshes of various shapes and sizes, which are sampled from the SURREAL dataset. We even observe attack success for partially occluded adversarial textures (e.g. the third column)."/>
+<figcaption>Figure 3: Adversarial Attack Examples against Faster R-CNN.</figcaption>
+</figure>
+
+<p>The advent of "Learning Transferable 3D Adversarial Cloaks for Deep Trained
+Detectors" (Maesumi et al., 2021) marks a transformative moment in the
+world of adversarial research. This method presents a groundbreaking
+adversarial attack pipeline that crafts adversarial patches on 3D human meshes.
+The architecture is shown in Figure 1, while
+example results are shown in Figure 2. Key contributions
+and characteristics of this approach are summarized below:</p>
+
+<ol>
+<li><p><strong>Innovative Patch-Based Attack:</strong> Unlike traditional adversarial
+attacks that append patches, this new form of attack maps into the
+3D object world and is back-propagated through differentiable
+rendering. This creates adversarial textures on 3D human meshes,
+leading to an attacking scheme that maintains its efficacy in the
+physical world.</p></li>
+<li><p><strong>Real-World Robustness:</strong> The adversarial patches are trained under
+deformations consistent with real-world materials, showcasing the
+ability to fool state-of-the-art deep object detectors even under
+varying views. This represents a significant advance over existing
+methods.</p></li>
+<li><p><strong>Transferable Adversarial Design:</strong> The created 3D adversarial
+patches can be transferred to human meshes in various poses and
+rendered onto real-world background images. This contributes to an
+enhanced and more versatile attacking scheme.</p></li>
+<li><p><strong>Potential Implications:</strong> The proposed method's persistent
+strength in physical-world scenarios offers a rich avenue for
+exploration in both adversarial defense mechanisms and real-world
+object detection strategies.</p></li>
+</ol>
+
+<p>In the context of the integration of IR/EO video streams, this innovative
+method introduces a complex layer of considerations related to object detection
+and adversarial resilience. Through the synthesis of 3D object modeling and
+adversarial texture creation, this method contributes to an evolving landscape
+of techniques that must be handled with care in the deployment of IR/EO
+systems. Experimental results further emphasize the effectiveness and
+uniqueness of this approach, suggesting promising directions for future
+research and applications.</p>
+
+<p><strong>Code:</strong>
+The code is available in SharePoint.</p>
+
+<h4 id="references">References</h4>
+
+<ul>
+<li><p>Maesumi, A., Zhu, M., Wang, Y., Chen, T., Wang, Z., &amp; Bajaj, C. (2021).
+Learning transferable 3D adversarial cloaks for deep trained detectors. ArXiv
+Preprint ArXiv:2104.11101.</p></li>
+<li><p>Yang, H., Huang, X., Sun, B., Bajaj, C., &amp; Huang, Q. (2023). GenCorres:
+Consistent Shape Matching via Coupled Implicit-Explicit Shape Generative
+Models. ArXiv Preprint ArXiv:2304.10523.</p></li>
+<li><p>Song, C., Huang, Q., &amp; Bajaj, C. (2022). E-cir: Event-enhanced continuous
+intensity recovery. Proceedings of the IEEE/CVF Conference on Computer Vision
+and Pattern Recognition, 7803–7812.</p></li>
+</ul>
+
+
+    </div>
+</body>
+</html>

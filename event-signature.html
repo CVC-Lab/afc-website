@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligent Machine Learning for Real Time Processing</title>
+    <link rel="stylesheet" href="/afc-website/static/style.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="/afc-website/">Intelligent Machine Learning for Real Time Processing of Hyperspectral Video Streams</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/afc-website/sampling.html" class="">On the Fly Sampling</a></li>
+                <li><a href="/afc-website/camera-isp.html" class="">Camera ISP Code & Paper</a></li>
+                <li><a href="/afc-website/signature-detection.html" class="">Signature Detection & Classification</a></li>
+                <li><a href="/afc-website/integration.html" class="">Integration of IR/EO Video Streams</a></li>
+                <li><a href="/afc-website/event-signature.html" class="active">Novel Event Signature Detection</a></li>
+                <li><a href="/afc-website/localization.html" class="">Real Time Localization</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-container">
+        
+    <h1 id="novel-event-signature-detection">Novel Event Signature Detection</h1>
+
+<p>Novel Event Signature Detection encompasses the discovery, analysis, and
+interpretation of underlying patterns and information signatures within
+complex data structures. Our first two method was discussed already in
+section <a href="../signature-detection.html#deblursr-event-based-motion-deblurring-under-the-spiking">DeblurSR</a>
+and <a href="../integration.html#learning-transferable-3d-adversarial-cloaks-for-deep-trained-detectors">Learning
+Transferable Cloaks</a>.
+Two additional
+cutting-edge methodologies are at the forefront of current research:
+Higher Order Feature Selection (HOFS) and Probabilistic PolarGMM. These
+methods, outlined below, exemplify advancements in feature selection,
+unsupervised clustering, and noisy projection image analysis.</p>
+
+<p>The novel contributions in event signature detection showcase the
+continuous innovation in the realms of feature selection and
+unsupervised learning. By advancing mutual information approximation
+techniques and unsupervised clustering methods, the highlighted research
+propels the understanding of complex patterns within data. The extension
+of traditional methodologies to higher-order constructs and
+probabilistic models marks a significant progression in the field,
+broadening the horizons for future exploration and application. These
+advancements not only serve to enrich the current landscape of data
+analytics but also pave the way for more sophisticated and nuanced
+analyses in various domains.</p>
+
+<h3 id="hofs-higher-order-mutual-information-approximation-for-feature-selection-in-r">HOFS: Higher Order Mutual Information Approximation for Feature Selection in R</h3>
+
+<p>Feature selection is a pivotal step in predictive modeling, where
+relevant features must be identified to enhance model quality
+(Gajowniczek et al., 2022). HOFS presents a novel approach to this task,
+utilizing higher-order mutual information (MI) approximation. Contrary
+to existing methods, which often lead to locally optimal selections:</p>
+
+<ol>
+<li><p><strong>Higher Order Approximation:</strong> HOFS employs a higher order MI-based
+technique, bypassing the limitations of the traditional lower order
+approximation.</p></li>
+<li><p><strong>Ranked Collection:</strong> Instead of a single list, HOFS provides a
+ranked collection of feature subsets that maximizes MI, thereby
+acknowledging interdependent features.</p></li>
+<li><p><strong>Performance Excellence:</strong> The proposed method outshines existing
+feature selection approaches, maintaining similar running times and
+computational complexity while delivering more nuanced feature
+ranking.</p></li>
+</ol>
+
+<p>This methodology extends the boundaries of feature selection, allowing
+for the identification of non-local feature combinations and fostering a
+deeper understanding of their interdependence.</p>
+
+<h3 id="probabilistic-polargmm-unsupervised-cluster-learning-of-very-noisy-projection-images-of-unknown-pose">Probabilistic PolarGMM: Unsupervised Cluster Learning of Very Noisy Projection Images of Unknown Pose</h3>
+
+<p>In the domain of cryogenic electron microscopy (Cryo-EM), unsupervised
+clustering and alignment play a significant role in inferring
+orientations and grouping similar images
+(Chockchowwat &amp; Bajaj, 2022). The Probabilistic PolarGMM methodology
+introduces:</p>
+
+<ol>
+<li><p><strong>Fourier-Bessel Steerable PCA:</strong> An efficient, adaptable, low-rank
+rotation operator, extended to handle translations, serves as the
+foundational representation.</p></li>
+<li><p><strong>Unsupervised Learning:</strong> Utilizing a probabilistic
+polar-coordinate Gaussian mixture model, soft clusters are learned
+through an expectation-maximization (EM) algorithm.</p></li>
+<li><p><strong>Robust Alignment:</strong> The method exhibits robustness against
+alignment imperfections, enhancing the reliability of rotational
+clusters.</p></li>
+</ol>
+
+<p>Multiple benchmarks demonstrate the superiority of probabilistic
+PolarGMM against standard Cryo-EM tools in various clustering metrics
+and alignment errors, affirming its potential for improved performance
+in very noisy projection image analysis. The pipeline is shown in figure 1 and
+some results are shown in figure 2.</p>
+
+<figure id="PolarGMMPipeline">
+
+<img src="../static/images/PolarGMMPipeline.png" alt="Probabilistic PolarGMM pipeline"/>
+
+<figcaption>Figure 1: Probabilistic PolarGMM pipeline.</figcaption>
+
+</figure>
+
+<figure id="PolarGMMResults">
+
+<img src="../static/images/PolarGMMResults.png" alt="GMM Results"/>
+
+<figcaption>Figure 2: Class averages from 70S-T. Averages with faulty features,
+
+blurry, or missing are marked with red circles.</figcaption>
+
+</figure>
+
+<h4 id="references">References</h4>
+
+<ul>
+<li><p>Gajowniczek, K., Wu, J., Gupta, S., &amp; Bajaj, C. (2022). HOFS: Higher order
+mutual information approximation for feature selection in R. SoftwareX, 19, 101148.</p></li>
+<li><p>Chockchowwat, S., &amp; Bajaj, C. L. (2022). Probabilistic PolarGMM: Unsupervised
+Cluster Learning of Very Noisy Projection Images of Unknown Pose. ArXiv
+Preprint ArXiv:2206.12959.</p></li>
+</ul>
+
+
+    </div>
+</body>
+</html>
