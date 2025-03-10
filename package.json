@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
-    "gatsby": "^5.12.4",
+    "gatsby": "^5.14.1",
     "gatsby-plugin-image": "^3.12.3",
     "gatsby-plugin-manifest": "^5.12.3",
     "gatsby-plugin-sharp": "^5.12.3",
