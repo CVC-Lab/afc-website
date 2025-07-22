@@ -16,7 +16,6 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@mui/material": "^5.16.13",
     "gatsby": "^5.14.2",
     "gatsby-plugin-image": "^3.14.0",
     "gatsby-plugin-manifest": "^5.14.0",
@@ -31,15 +30,13 @@
     "gatsby-transformer-sharp": "^5.14.0",
     "katex": "^0.16.21",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scroll": "^1.9.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "gh-pages": "^6.2.0"
   },
   "overrides": {
     "katex": "^0.16.21",
-    "multer": "^2.0.0",
     "cookie": "^0.7.0",
     "path-to-regexp": "^0.1.12"
   }
